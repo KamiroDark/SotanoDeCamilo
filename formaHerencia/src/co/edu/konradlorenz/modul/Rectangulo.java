@@ -35,7 +35,17 @@ public class Rectangulo extends Forma {
 	public void setLado2(double lado2) {
 		this.lado2 = lado2;
 	}
+	
+	@Override
+    public double area() {
+        return lado1 * lado2;
+    }
 
+    @Override
+    public double perimetro() {
+        return 2 * (lado1 + lado2);
+    }
+    
 	@Override
 	public String toString() {
 		return "Rectangulo [lado1=" + lado1 + ", lado2=" + lado2 + "]";

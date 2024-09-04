@@ -24,7 +24,17 @@ public class Circulo extends Forma{
 	public void setRadio(double radio) {
 		this.radio = radio;
 	}
+	
+	@Override
+    public double area() {
+        return Math.PI * Math.pow(radio, 2);
+    }
 
+    @Override
+    public double perimetro() {
+        return 2 * Math.PI * radio;
+    }
+    
 	@Override
 	public String toString() {
 		return "Circulo [radio=" + radio + "]";

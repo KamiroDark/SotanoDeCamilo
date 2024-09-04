@@ -23,19 +23,12 @@ public class Forma {
 		return "Forma [c=" + c + "]";
 	}
 	
-	 public double area(double lado1, double lado2) {
-	        return lado1 * lado2;
+	 public double area() {
+	        return 0;
 	    }
-	
-	 public double area(double radio) {
-	        return Math.PI * Math.pow(radio, 2);
+
+	    public double perimetro() {
+	        return 0;
 	    }
-	 
-	 public double perimetro(double lado1, double lado2) {
-	        return 2 * (lado1 + lado2);
-	    }
-	 
-	 public double perimetro(double radio) {
-	        return 2 * Math.PI * radio;
-	    }
+
 }
