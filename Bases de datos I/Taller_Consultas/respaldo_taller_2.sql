@@ -1,0 +1,84 @@
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+--
+-- Host: localhost    Database: taller_2
+-- ------------------------------------------------------
+-- Server version	10.4.32-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `depart`
+--
+
+DROP TABLE IF EXISTS `depart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `depart` (
+  `dept_no` int(11) NOT NULL,
+  `dnombre` varchar(30) DEFAULT NULL,
+  `loc` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`dept_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `depart`
+--
+
+LOCK TABLES `depart` WRITE;
+/*!40000 ALTER TABLE `depart` DISABLE KEYS */;
+INSERT INTO `depart` VALUES (10,'CONTABILIDAD','SEVILLA'),(20,'INVESTIGACI?N','MADRID'),(30,'VENTAS','BARCELONA'),(40,'PRODUCCI?N','BILBAO');
+/*!40000 ALTER TABLE `depart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `emple`
+--
+
+DROP TABLE IF EXISTS `emple`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `emple` (
+  `emp_no` int(11) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `oficio` varchar(30) DEFAULT NULL,
+  `dir` int(11) DEFAULT NULL,
+  `fecha_alt` date DEFAULT NULL,
+  `salario` int(11) DEFAULT NULL,
+  `comision` int(11) DEFAULT NULL,
+  `dept_no` int(11) DEFAULT NULL,
+  PRIMARY KEY (`emp_no`),
+  KEY `fk_dept_no` (`dept_no`),
+  CONSTRAINT `fk_dept_no` FOREIGN KEY (`dept_no`) REFERENCES `depart` (`dept_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `emple`
+--
+
+LOCK TABLES `emple` WRITE;
+/*!40000 ALTER TABLE `emple` DISABLE KEYS */;
+INSERT INTO `emple` VALUES (7369,'S?NCHEZ','EMPLEADO',7902,'1990-12-17',1040,NULL,20),(7499,'ARROYO','VENDEDOR',7698,'1990-02-20',1500,390,30),(7521,'SALA','VENDEDOR',7698,'1991-02-22',1625,650,30),(7566,'JIM?NEZ','DIRECTOR',7839,'1991-04-02',2900,NULL,20),(7654,'MART?N','VENDEDOR',7698,'1991-09-29',1600,1020,30),(7698,'NEGRO','DIRECTOR',7839,'1991-05-01',3005,NULL,30),(7782,'CEREZO','DIRECTOR',7839,'1991-06-09',2885,NULL,10),(7788,'GIL','ANALISTA',7566,'1991-11-09',3000,NULL,20),(7839,'REY','PRESIDENTE',NULL,'1991-11-17',4100,NULL,10),(7844,'TOVAR','VENDEDOR',7698,'1991-09-08',1350,0,30),(7876,'ALONSO','EMPLEADO',7788,'1991-09-23',1430,NULL,20),(7900,'JIMENO','EMPLEADO',7698,'1991-12-03',1335,NULL,30),(7902,'FERN?NDEZ','ANALISTA',7566,'1991-12-03',3000,NULL,20),(7934,'MU?OZ','EMPLEADO',7782,'1992-01-23',1690,NULL,10);
+/*!40000 ALTER TABLE `emple` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-05-20 23:47:26
