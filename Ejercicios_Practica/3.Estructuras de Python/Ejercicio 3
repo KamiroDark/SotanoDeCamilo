@@ -1,0 +1,62 @@
+#Agenda de contactos (Por terminal)
+
+
+my_contacts = {
+    "kamiro":3124662957,
+    "Rudeus":2314544243
+}
+
+def welcome():
+    while True:
+        print("----Kontactos----")
+        for contact in my_contacts:
+            print("------------")
+            print("Nombre: " + contact)
+            print("Numero: " + str(my_contacts[contact]))
+        print("1. Buscar/Seleccionar contacto")
+        print("2. Agregar contacto")
+        print("3. Salir")
+        print("------------")
+
+        option = int(input("Ingresa una opción valida del menú:"))
+        if option == 1:
+            name = input("Ingrese nombre a buscar en contactos: ")
+            searchContact(name)
+        elif option == 2:
+            addContact()
+        elif option == 3:
+            print("Gracias por usar mi programa. ¡Hasta luego!")
+            break
+
+def searchContact(name):
+    print("------------")
+    print("Has seleccionado el contacto:")
+    print("Nombre: " + name)
+    print("Numero: " + str(my_contacts[name]))
+    print("Opciones:" \
+    "\n1. Eliminar contacto" \
+    "\n2. Volver al menú principal")
+
+    option = int(input("Ingresa una opción valida del menú:"))
+    if option == 1:
+        del my_contacts[name]
+        print("Contacto eliminado.")
+    elif option == 2:
+        print("Volviendo al menú principal...")
+
+def addContact():
+    while True:
+        print("A continuación ingresa los datos del contacto...")
+
+        nickname = input("Ingresa el nombre del contacto:")
+        number = int(input("Ingresa el numero:"))
+        if type(number)== int and len(str(number))== 10:
+           
+            my_contacts[nickname]=number
+            print("Contacto agregado ^^")
+            break
+
+        else:
+            print("Ingresa un numero valido de 10 digitos.")
+
+welcome()
